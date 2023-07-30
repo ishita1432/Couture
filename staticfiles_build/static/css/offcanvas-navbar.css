@@ -1,0 +1,121 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+.navbar-light .navbar-nav .nav-link {
+  /* padding: 0 20px; */
+  color: black;
+  /* transition: 0.3s ease; */
+
+}
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:active {
+    color: red;
+}
+
+.navbar-light .navbar-toggler{
+  border: none;
+  outline: none;
+}
+
+#bar {
+  font-size: 1.2rem;
+  padding: 7px;
+  cursor: pointer;
+  color: black;
+}
+
+/* Custom CSS */
+.dropdown-menu-center {
+  left: 50% !important;
+  transform: translateX(-50%);
+}
+
+
+@media only screen and (max-width: 991px) {
+  /* body>nav>div>button:hover,
+  body>nav>div>button:focus{
+    background-color:deeppink;
+
+  }
+  
+
+  body>nav>div>button:hover #bar,
+  body>nav>div>button:focus #bar{
+    color: rgb(255, 255, 255);
+   
+  } */
+
+  #navbarSupportedContent > ul{
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  #navbarSupportedContent > ul>li a{
+    padding: 10px 0;
+  }
+
+  /* #cart{
+      display: inline-block;
+    } */
+  /* }
+
+  @media (min-width: 769px) {
+    .shopping-cart-icon {
+      display: none;
+    }
+  } */
+}
+
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 60px; /* Height of navbar */
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    visibility: hidden;
+    background-color: #f4f4f4;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out;
+  }
+  .offcanvas-collapse.open {
+    visibility: visible;
+    transform: translateX(-100%);
+  }
+  
+}
+
+.nav-scroller .nav {
+  color: rgba(255, 255, 255, .75);
+}
+
+.nav-scroller .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .5rem;
+  font-size: .875rem;
+  color: #6c757d;
+}
+
+.nav-scroller .nav-link:hover {
+  color: #007bff;
+}
+
+.nav-scroller .active {
+  font-weight: 500;
+  color: #343a40;
+}
+
+
+.bg-purple {
+  background-color: #6f42c1;
+}

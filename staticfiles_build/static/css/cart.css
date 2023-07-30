@@ -1,0 +1,39 @@
+/* #form1 {
+    width: 50px;
+    height: 40px;
+    
+} */
+
+/* .cart{
+    width: 100%;
+} */
+.out-of-stock-message{
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .card-2,
+    .bg-light {
+      padding: 2rem;
+    }
+    .quantity-input {
+      width: 40px;
+    }
+  }
+  @media (max-width: 575px) {
+    .card-2,
+    .bg-light {
+      padding: 1rem;
+    }
+    .quantity-input {
+      width: 30px;
+    }
+  }
+  @media (max-width: 390px){
+    .product_data .category{
+        margin-top: 10px;;
+
+    }
+
+   
+  }
