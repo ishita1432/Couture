@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+  font-size: 16px;
+  color: #f4f4f4;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  padding: 0 20px;
+  color: black;
+  transition: 0.3s ease;
+
+}
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:active {
+    color: deeppink;
+}
+
+.navbar-light .navbar-toggler{
+  border: none;
+  outline: none;
+}
+
+#bar {
+  font-size: 1.2rem;
+  padding: 7px;
+  cursor: pointer;
+  color: black;
+}
+
+/* Custom CSS */
+.dropdown-menu-center {
+  left: 50% !important;
+  transform: translateX(-50%);
+}
+
+
+@media only screen and (max-width: 991px) {
+  /* body>nav>div>button:hover,
+  body>nav>div>button:focus{
+    background-color:deeppink;
+
+  }
+  
+
+  body>nav>div>button:hover #bar,
+  body>nav>div>button:focus #bar{
+    color: rgb(255, 255, 255);
+   
+  } */
+
+  #navbarSupportedContent > ul{
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  #navbarSupportedContent > ul>li a{
+    padding: 10px 0;
+  }
+
+  /* #cart{
+      display: inline-block;
+    } */
+  /* }
+
+  @media (min-width: 769px) {
+    .shopping-cart-icon {
+      display: none;
+    }
+  } */
+}

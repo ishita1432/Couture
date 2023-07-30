@@ -1,0 +1,220 @@
+/* .button input[type=button]{
+    border: none;
+    outline: none;
+    color: black;
+    background-color: transparent;
+    width: auto;
+    position: absolute;
+    top: 800px;
+   
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+}
+.category-card {
+    position: relative;
+    margin: 2rem 0 0;
+    width: 100%;
+   
+  }
+  
+  .category-card img {
+    width: 100%;
+    height: 100%;
+    
+  }
+  
+  .category-card::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.37);
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 200ms;
+  }
+  
+  .category-card:hover::after {
+    opacity: 1;
+  }
+  
+  .button input[type=button] {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    border-bottom: 1px solid black;
+    color:black;
+    background-color: white;
+    padding: 0.75rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: black;
+    opacity: 0;
+    transition:0.5s all;
+    z-index: 1;
+  }
+  
+  .category-card:hover .button input[type=button] {
+    opacity: 1;
+    left: 50%;
+  }
+  
+  .button input[type=button]:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  
+  @media (max-width:768px){
+    .button input[type=button] {
+        font-size: 20px; 
+        padding: 5px 10px; 
+    }
+  }
+
+  .collection_container {
+    display: flex;
+    justify-content:space-between;
+    width: 100%;
+    height: 100%;
+    background-color:rgb(244, 244, 244);
+    margin-top: 15px;
+  }
+  
+
+  @media (max-width:768px){
+    .collection_container {
+      display:block;
+      width: 100%;
+      height: 100%;
+      margin-top: 10px;
+      background-color:#f2ecec;
+    }
+    
+  }
+   */
+
+   .category .cat-box .cat-image {
+    position: relative;
+    overflow: hidden;
+    background-color: #f4f4f4;
+  }
+  
+  .category .cat-box .cat-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    z-index: 2;
+    display: block;
+    width: 50%;
+    height: 100%;
+    background: -webkit-linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
+    transform: skewX(-25deg);
+  }
+  
+  .category .cat-box:hover .cat-image::before {
+    animation: shine 1s;
+  }
+  
+  @keyframes shine {
+    100% {
+      left: 100%;
+    }
+  }
+  
+  .category .cat-box .shine-effect {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    transform: rotate(45deg);
+    background: linear-gradient(-45deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out;
+  }
+  
+  .category .cat-box:hover .shine-effect {
+    opacity: 1;
+  }
+  
+  .category .cat-box .offer-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .category .cat-box:hover .offer-overlay {
+    opacity: 1;
+  }
+  
+  .category .cat-box .offer-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    transition: all 250ms ease-out;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .category .cat-box .offer-info .heading {
+    font-size: 2rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 10px;
+    margin-top: 90px;
+    color: black;
+    background-color:whitesmoke ;
+  }
+  
+  .category .cat-box .offer-info .offer-title {
+    color: whitesmoke;
+    font-size: 1.125rem;
+    font-weight: 300;
+    margin-top: 20px;
+    letter-spacing: 2px;
+  }
+  
+  .category .cat-box .offer-info .btn-outline-danger {
+    color: whitesmoke;
+    border-color: whitesmoke;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .category .cat-box .offer-info .btn-outline-danger:hover {
+    border-color: red;
+    background-color: red;
+  }
+  
+  .category .cat-box:hover .offer-info {
+    opacity: 1;
+  }
+  
+  @media (max-width:1030px){
+    .category .cat-box .cat-image{
+      margin-bottom: -50px;
+    }
+    .category .cat-box .offer-info .heading {
+      font-size: 3rem;
+    }
+  }
