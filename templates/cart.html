@@ -1,0 +1,138 @@
+{% extends 'main.html' %}
+{% load static %}
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+{% block content %}
+  <!-- cart + summary -->
+  <section class="bg-light py-5 mt-5 ">
+    <div class="container">
+      <div class="row ms-lg-5">
+        <!-- cart -->
+        <div class="col-lg-10 ms-lg-5">
+          <div class="card border shadow-0">
+            <div class="m-4">
+              <h4 class="card-title mb-4">Your shopping cart</h4>
+              {% if cart_product %}
+              {% for cart_pro in cart_product %}
+              <div class="row gy-3 mb-4 product_data">
+                <div class="col-lg-5">
+                  <div class="me-lg-5">
+                    <div class="d-flex ">
+                      <img src="{{cart_pro.product.product_image.url}}" class="border rounded me-3" style="width: 90px; height: 96px;" />
+                      <div class="">
+                        <h6 >{{cart_pro.product.product_name}}</h6>
+                        <p class="text-muted">{{cart_pro.product.material}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-2 col-sm-6 col-6 d-flex  text-nowrap  me-lg-3 product-quantity">                    
+                    {% csrf_token %}
+                    <input type="hidden" class="prod_id"
+                    value="{{cart_pro.product_id}}"
+                    data-product-id="{{ cart_pro.product_id }}">
+                    <button class="btn btn-link px-2 quantity-control decrease mb-lg-4 "
+                        data-action="decrease">
+                        <i class="fa fa-minus"></i>
+                    </button>
+
+                    <input id="form1" min="0" max="{{cart_pro.product.quantity}}" name="quantity" value="{{cart_pro.product_quantity}}" type="number"
+                    class="mt-3 mx-auto mb-3 quantity-input" style="width:50px;height:30px;padding-left:10px;" />
+                    
+                    <button class="btn btn-link px-2 quantity-control increase mb-lg-4 me-lg-4 "
+                        data-action="increase">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                    
+                    <h6 class="out-of-stock-message pt-lg-3" style="color:red;">Out of Stock</h6>
+                  <div class="ms-lg-4 ms-3 product-price mt-3">
+                    <text class="h6 total_price" >Rs.{{cart_pro.product.selling_price}}<small class="text-muted text-nowrap selling_price"> / per item </small></text> <br />
+                    
+                  </div>
+                </div>
+                
+                <div class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
+                  <div class="float-md-end">
+                  {% csrf_token %}
+
+                    <button  class="btn btn-outline-danger remove-from-cart mt-lg-2" data-cart-item-id="{{cart_pro.id}}"> Remove<i class="fa fa-trash ms-2"></i></button>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4">
+              {% endfor %}
+              <div class="d-flex justify-content-between" id="totalPrice">
+                <p class="mb-2">Total price:</p>
+                <p class="mb-2 tp fw-bold"></p>
+              </div>
+  
+              <div class="mt-3">
+                <a href="{% url 'order_summary' %}" class="btn btn-success w-100 shadow-0 mb-2"> Continue to Checkout </a>
+                <a href="{% url 'shop' %}" class="btn btn-light w-100 border mt-2"> Back to shop </a>
+              </div>
+              {% else %}
+                <h6>Your cart is empty</h6>
+                 {% endif %}
+                 
+            </div>
+
+  
+            {% comment %} <div class="border-top pt-4 mx-4 mb-4">
+              <p><i class="fas fa-truck text-muted fa-lg"></i> Free Delivery within 1-2 weeks</p>
+              <p class="text-muted">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip
+              </p>
+            </div> {% endcomment %}
+          
+        <!-- cart -->
+        {% comment %} <!-- summary -->
+        <div class="col-lg-3">
+          <div class="card mb-3 border shadow-0">
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <label class="form-label">Have coupon?</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control border" name="" placeholder="Coupon code" />
+                    <button class="btn btn-light border">Apply</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="card shadow-0 border">
+            <div class="card-body">
+              <div class="d-flex justify-content-between" id="totalItems">
+                <p class="mb-2">Total items:</p>
+                <p class="mb-2">{{cart_product.count}}</p>
+              </div>
+              <div class="d-flex justify-content-between" id="subTotal">
+                <p class="mb-2">SubTotal:</p>
+                <p class="mb-2 st"></p>
+              </div>
+              <div class="d-flex justify-content-between" id="shippingPrice">
+                <p class="mb-2">Shipping Charge:</p>
+                <p class="mb-2 sp"></p>
+              </div>
+              {% comment %} <div class="d-flex justify-content-between">
+                <p class="mb-2">TAX:</p>
+                <p class="mb-2">$14.00</p>
+              </div> {% endcomment %}
+              
+              
+            </div>
+          </div>
+        </div>
+        <!-- summary -->
+      </div>
+    </div>
+    
+              </div>
+    
+  </section>
+  <!-- cart + summary -->
+  
+  {% endblock content %}

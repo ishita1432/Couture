@@ -1,0 +1,257 @@
+{% extends 'main.html' %}
+<!-- sidebar + content -->
+{% load static %}
+<style>
+  @media (max-width:390px){
+  .product-image .img-fluid{
+    padding:50px;
+  }
+  }
+    input[type="range"] {
+      position: relative;
+      width: 100%;
+      height: 20px;
+      background-color: #ddd;
+      border-radius: 5px;
+    }
+  
+    input[type="range"]::before,
+    input[type="range"]::after {
+      position: absolute;
+      display: block;
+      color: #000;
+    }
+  
+    input[type="range"]::before {
+      content: attr(min);
+      left: 0;
+      top: -20px;
+    }
+  
+    input[type="range"]::after {
+      content: attr(max);
+      right: 0;
+      top: -20px;
+    }
+  
+
+</style>
+{% block content %}
+<section class="">
+  <div class="container" style="padding-top:100px;">
+    <div class="row">
+      <!-- sidebar -->
+      <div class="col-md-3">
+        <!-- Toggle button -->
+        <button
+                class="btn btn-outline-secondary mb-3 w-100 d-lg-none"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                >
+          <span>Show filter</span>
+        </button>
+        <!-- Collapsible wrapper -->
+        <div class="collapse card d-lg-block mb-5" id="navbarSupportedContent">
+          <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button
+                        class="accordion-button text-dark bg-light"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne"
+                        aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseOne"
+                        >
+                  Categories
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                <div class="accordion-body">
+                  <ul class="list-unstyled">
+                    <ul class="list-group-item-dark">
+                    <h6  class="text-dark text-decoration-none mb-0">Men's wear </h6>
+                      <li><a href="{% url 'category_view' sub_category='T-Shirt' %}" class="text-dark text-decoration-none">T-Shirt</a></li>
+                      <li><a href="{% url 'category_view' sub_category='Shirt' %}" class="text-dark text-decoration-none">Shirt</a></li>
+                      <li><a href="{% url 'category_view' sub_category='Jeans(Men)' %}" class="text-dark text-decoration-none">Jeans</a></li>
+                      <li><a href="{% url 'category_view' sub_category='Trousers' %}" class="text-dark text-decoration-none">Trousers</a></li>
+                      <li><a href="{% url 'category_view' sub_category='Ethnic(Men)' %}" class="text-dark text-decoration-none">Ethnic</a></li>
+                    </ul>
+                    <ul class="list-group-item-dark">
+                    <h6  class="text-dark text-decoration-none mt-2 mb-0">Women's wear </h6>
+                    <li><a href="{% url 'category_view' sub_category='Tops' %}" class="text-dark text-decoration-none">Tops </a></li>
+                    <li><a href="{% url 'category_view' sub_category='Kurtis' %}" class="text-dark text-decoration-none">Kurtis </a></li>
+                    <li><a href="{% url 'category_view' sub_category='Jeans(Women)' %}" class="text-dark text-decoration-none">Jeans </a></li>
+                    <li><a href="{% url 'category_view' sub_category='Ethnic(Women)' %}" class="text-dark text-decoration-none">Ethnic </a></li>
+                    </ul>
+                    <ul class="list-group-item-dark">
+                      <h6  class="text-dark text-decoration-none mt-2 mb-0">Footwear </h6>
+                      <li><a href="{% url 'category_view' sub_category='Sports Shoes' %}" class="text-dark text-decoration-none">Sports Shoes </a></li>
+                    <li><a href="{% url 'category_view' sub_category='Sneakers (Men)' %}" class="text-dark text-decoration-none">Sneakers(Men) </a></li>
+                    <li><a href="{% url 'category_view' sub_category='Sneakers (Women)' %}" class="text-dark text-decoration-none">Sneakers(Women) </a></li>
+
+                      
+                    </ul>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {% comment %} <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button
+                        class="accordion-button text-dark bg-light"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseTwo"
+                        aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseTwo"
+                        >
+                  Brands
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo">
+                <div class="accordion-body">
+                  <div>
+                    <!-- Checked checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked1" checked />
+                      <label class="form-check-label" for="flexCheckChecked1">Mercedes</label>
+                      <span class="badge badge-secondary float-end">120</span>
+                    </div>
+                    <!-- Checked checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked2" checked />
+                      <label class="form-check-label" for="flexCheckChecked2">Toyota</label>
+                      <span class="badge badge-secondary float-end">15</span>
+                    </div>
+                    <!-- Checked checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked3" checked />
+                      <label class="form-check-label" for="flexCheckChecked3">Mitsubishi</label>
+                      <span class="badge badge-secondary float-end">35</span>
+                    </div>
+                    <!-- Checked checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked4" checked />
+                      <label class="form-check-label" for="flexCheckChecked4">Nissan</label>
+                      <span class="badge badge-secondary float-end">89</span>
+                    </div>
+                    <!-- Default checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                      <label class="form-check-label" for="flexCheckDefault">Honda</label>
+                      <span class="badge badge-secondary float-end">30</span>
+                    </div>
+                    <!-- Default checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                      <label class="form-check-label" for="flexCheckDefault">Suzuki</label>
+                      <span class="badge badge-secondary float-end">30</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> {% endcomment %}
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button
+                        class="accordion-button text-dark bg-light"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseThree"
+                        aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseThree"
+                        >
+                  Price
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree">
+                <div class="accordion-body filter-price">
+                  <form method="POST" action="{% url 'filter' %}">
+                    {% csrf_token %}
+                    <input type="range" min="299" max="1000" value="{{amount}}" oninput = "max_price.value=this.value" class="form-range" id="customRange1" />
+                    
+                    <div class="row mb-3">
+                      <div class="col-6">
+                        <p class="mb-0">
+                          Max
+                        </p>
+                    <input type="number" for="max_price" name="max_price" id="max_price" class="form-control" value="{{amount}}" onkeyup="customRange1.value=this.value" />
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-white w-100 border border-secondary">apply</button>
+                  </form>
+                </div>
+              </div>              
+            </div>
+            
+               
+              
+            
+              
+                  <!-- Default checkbox -->
+                  
+                  <!-- Default checkbox -->
+                  
+                  <!-- Default checkbox -->
+                  
+                  <!-- Default checkbox -->
+                  
+                
+            
+          </div>
+        </div>
+      </div>
+      <!-- sidebar -->
+      <!-- content -->
+      <div class="col-lg-9">
+         
+        <div class="container text-center">
+          <div class="row ">
+            {% for item in products %}
+            <div class="col-md-3 col-6">
+              <div class="product-grid">
+                <div class="product-image px-lg-0 ">
+                  <div class="position-relative">
+                    {% if item.trending %}
+                    <span
+                      class="badge bg-danger text-white position-absolute top-0 start-0 px-1 px-lg-1"
+                      >Trending</span
+                    >
+                    {% endif %}
+                    <img class="img-fluid w-100" src="{{item.product_image.url}}" />
+                  </div>
+                  <ul class="product-links py-0 py-lg-1">
+                    {% csrf_token %}
+                    <li>
+                      <a class="add-to-cart" data-product-id="{{item.id}}"><i class="fa fa-shopping-cart" style="cursor:pointer;"></i></a>
+                    </li>
+                    <li>
+                      <a class="add-to-wishlist" data-product-id="{{item.id}}" ><i class="fa fa-heart" style="cursor:pointer;"></i></a>
+                    </li>
+                    <li>
+                      <a href="{% url 'product_view' item.category.slug item.slug %}"
+                        ><i class="fa fa-eye"></i
+                      ></a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="product-content">
+                  <div class="price">
+                    Rs.{{item.selling_price}} <span>Rs.{{item.original_price}}</span>
+                  </div>
+                  <h3 class="title">{{item.product_name}}</h3>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        
+        {% endblock content %}
+    

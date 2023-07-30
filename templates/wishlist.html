@@ -1,0 +1,117 @@
+{% extends 'main.html' %}
+{% load static %}
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+{% block content %}
+  <!-- cart + summary -->
+  <section class="bg-light py-5 mt-5 ">
+    <div class="container ms-lg-5">
+      <div class="row ms-lg-5">
+        <!-- cart -->
+        <div class="col-lg-9 ms-lg-5  me-lg-5">
+          <div class="card border shadow-0">
+            <div class="m-4">
+              <h4 class="card-title mb-4">Your Wishlist</h4>
+              {% if wish_product %}
+              {% for cart_pro in wish_product %}
+              <div class="row gy-3 mb-4 product_data">
+                <div class="col-lg-5">
+                  <div class="me-lg-5">
+                    <div class="d-flex ">
+                      <img src="{{cart_pro.product.product_image.url}}" class="border rounded me-3" style="width: 90px; height: 96px;" />
+                      <div class="">
+                        <h6 >{{cart_pro.product.product_name}}</h6>
+                        <p class="text-muted">{{cart_pro.product.material}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2 me-lg-5 pe-lg-5">
+                  <div class="float-md-end">
+                  
+
+                    <a href="{% url 'product_view' cart_pro.product.category.slug cart_pro.product.slug %}" class="btn btn-primary mt-lg-2" > View product<i class="fa fa-eye ms-2"></i></a>
+                  </div>
+                </div>
+                <div class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
+                  <div class="float-md-end">
+                  {% csrf_token %}
+
+                    <button  class="btn btn-outline-danger remove-from-wishlist mt-lg-2" data-wishlist-item-id="{{cart_pro.id}}"> Remove<i class="fa fa-trash ms-2"></i></button>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4">
+              {% endfor %}
+              {% comment %} <div class="d-flex justify-content-between" id="totalPrice">
+                <p class="mb-2">Total price:</p>
+                <p class="mb-2 tp fw-bold"></p>
+              </div> {% endcomment %}
+  
+              
+              {% else %}
+                <h6>Your wishlist is empty</h6>
+                 {% endif %}
+                 
+            </div>
+
+  
+            {% comment %} <div class="border-top pt-4 mx-4 mb-4">
+              <p><i class="fas fa-truck text-muted fa-lg"></i> Free Delivery within 1-2 weeks</p>
+              <p class="text-muted">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip
+              </p>
+            </div> {% endcomment %}
+          
+        <!-- cart -->
+        {% comment %} <!-- summary -->
+        <div class="col-lg-3">
+          <div class="card mb-3 border shadow-0">
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <label class="form-label">Have coupon?</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control border" name="" placeholder="Coupon code" />
+                    <button class="btn btn-light border">Apply</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="card shadow-0 border">
+            <div class="card-body">
+              <div class="d-flex justify-content-between" id="totalItems">
+                <p class="mb-2">Total items:</p>
+                <p class="mb-2">{{cart_product.count}}</p>
+              </div>
+              <div class="d-flex justify-content-between" id="subTotal">
+                <p class="mb-2">SubTotal:</p>
+                <p class="mb-2 st"></p>
+              </div>
+              <div class="d-flex justify-content-between" id="shippingPrice">
+                <p class="mb-2">Shipping Charge:</p>
+                <p class="mb-2 sp"></p>
+              </div>
+              {% comment %} <div class="d-flex justify-content-between">
+                <p class="mb-2">TAX:</p>
+                <p class="mb-2">$14.00</p>
+              </div> {% endcomment %}
+              
+              
+            </div>
+          </div>
+        </div>
+        <!-- summary -->
+      </div>
+    </div>
+    
+              </div>
+    
+  </section>
+  <!-- cart + summary -->
+  
+  {% endblock content %}
