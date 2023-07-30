@@ -40,7 +40,6 @@ ALLOWED_HOSTS = ['.vercel.app','.now.sh']
 INSTALLED_APPS = [
     'store',
     'django-jazzmin',
-    'cart',
     'stripe',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -126,7 +125,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-CART_SESSION_ID = 'cart'
+
 
 
 # Static files (CSS, JavaScript, Images)
