@@ -18,26 +18,18 @@ def home(request):
     sneakers = Product.objects.filter(type="Sneakers")
     category = Category.objects.all()
     trending_products = Product.objects.filter(trending=True)
-    category_men = 'Men'
     context = {
         'product': product,
         'category': category,
         'trending_products': trending_products,
-        'category_men':category_men,
         'sneakers':sneakers,
-        
     }
     return render(request, 'index.html', context)
 
-# def category_view(request, category):
-#     category = Category.objects.get(name=category)
-#     products = Product.objects.filter(category=category)
-#     return render(request, 'shop.html', {'products': products})
 
 def category_view(request, sub_category):
     subcategory = SubCategory.objects.get(name=sub_category)
     products = Product.objects.filter(sub_category_id=subcategory.id)
-    
     return render(request, 'shop.html', {'products': products})
 
 def category(request):
@@ -62,8 +54,6 @@ def shop_with_category(request,category):
     products = Product.objects.filter(category=cat)
     return render(request, 'shop.html', {'products': products})
 
-
-
 def product_type(request,type):
     products = Product.objects,filter(type=type)
     return render(request, 'shop.html', {'products': products})
@@ -87,7 +77,6 @@ def wishlist(request):
     context = {'wish_product':wish_pro}
     return render(request,'wishlist.html',context)
     
-# @login_required(login_url='login')
 def add_to_cart(request):
     if request.user.is_authenticated:
         if request.method == 'POST' and request.headers.get('X-Requested-With') == 'XMLHttpRequest':
@@ -109,8 +98,6 @@ def add_to_cart(request):
     
     else:
         return JsonResponse({'message':'Please login to your account!!'})
-
-    
 
 
 def update_quantity(request):
@@ -172,7 +159,7 @@ def update_cart_total(request):
     return JsonResponse(data)
 
 import json
-# @login_required(login_url='login')
+
 def order_summary(request):
     if request.user.is_authenticated:
         cart_items = Cart.objects.filter(user=request.user)
@@ -311,52 +298,6 @@ def checkout(request):
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
-
-# def payment(request):
-# 	key = settings.STRIPE_PUBLISHABLE_KEY
-# 	order_qs = OrderItem.objects.get(user=request.user)
-# 	order_total = order_qs.get_totals()
-# 	totalCents = float(order_total * 100)
-# 	total = round(totalCents, 2)
-# 	if request.method == 'POST':
-# 		charge = stripe.Charge.create(amount=total,
-#             currency='INR',
-#             description=order_qs,
-#             source=request.POST['stripeToken'])
-
-
-# 	return render(request, 'p.html', {"key": key, "total": total})
-# import random as r
-# def charge(request):
-# 	order = OrderItem.objects.get(user=request.user)
-# 	order_total = order.get_totals()
-# 	totalCents = int(float(order_total * 100))
-# 	if request.method == 'POST':
-# 		charge = stripe.Charge.create(amount=totalCents,
-#             currency='INR',
-#             description=order,
-#             source=request.POST['stripeToken'])
-		# if charge.status == "succeeded":
-		# 	orderId = get_random_string(length=16, allowed_chars=u'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
-		# 	print(charge.id)
-		# 	order.ordered = True
-		# 	order.paymentId = charge.id
-		# 	order.orderId = f'#{request.user}{orderId}'
-		# 	order.save()
-			
-		# return redirect('cart')
-  
-
-# def view_orders(request):
-#     # Fetch orders associated with the currently logged-in user
-#     user_orders = Order.objects.filter(user=request.user)
-
-#     context = {
-#         'orders': user_orders,
-#     }
-
-#     return render(request, 'orders.html', context)
-
 @csrf_exempt
 def payment(request,total_price):
     if request.method=='POST':
@@ -372,18 +313,11 @@ def payment(request,total_price):
                             'currency':'inr',
                             'product_data':{
                                 'name':'Pay',
-                                
-                                # 'unit_amount': items.get_total()*100,
                             },
                             'unit_amount':total_price*100,
                             
                         },
                         'quantity': 1,
-                        # 'name': 'ecommerce',  # You can set a custom name for the line item
-                        # 'amount': int(total_amount * 100),  # Stripe expects amount in cents
-                        # 'currency': 'inr',  # Replace with your currency code
-                        
-
                     }
                     
                     
@@ -398,35 +332,3 @@ def payment(request,total_price):
             return HttpResponse(e)
 
         return redirect(checkout_session.url)
-# @csrf_exempt
-# def create_checkout_session(request):
-#     if request.method == 'GET':
-#         domain_url = 'http://localhost:8000/'
-#         stripe.api_key = settings.STRIPE_SECRET_KEY
-#         try:
-#             # Create new Checkout Session for the order
-#             # Other optional params include:
-#             # [billing_address_collection] - to display billing address details on the page
-#             # [customer] - if you have an existing Stripe Customer ID
-#             # [payment_intent_data] - capture the payment later
-#             # [customer_email] - prefill the email input in the form
-#             # For full details see https://stripe.com/docs/api/checkout/sessions/create
-
-#             # ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
-#             checkout_session = stripe.checkout.Session.create(
-#                 success_url=domain_url ,
-#                 cancel_url=domain_url,
-#                 payment_method_types=['card'],
-#                 mode='payment',
-#                 line_items=[
-#                     {
-#                         'name': 'T-shirt',
-#                         'quantity': 1,
-#                         'currency': 'usd',
-#                         'amount': '2000',
-#                     }
-#                 ]
-#             )
-#             return JsonResponse({'sessionId': checkout_session['id']})
-#         except Exception as e:
-#             return JsonResponse({'error': str(e)})
