@@ -38,7 +38,7 @@ To run this project locally, follow these steps:
 4. Create a superuser: `python manage.py createsuperuser`
 5. Start the development server: `python manage.py runserver`
 
-Open your web browser and access `http://ishitasharma.pythonanywhere.com` to view the website.
+Open your web browser and access http://ishitasharma.pythonanywhere.com to view the website.
 
 ## Contributing
 
