@@ -1,6 +1,6 @@
-# onlineSore
+# Couture
 
-This is an e-commerce website developed using HTML, CSS, Bootstrap for the frontend and Django for the backend. The website includes features such as adding items to the cart, secure payment integration, and more.
+Couture stands as a premier online retailer, offering diverse clothing and footwear options for all genders, emphasizing quality, style, and individual fashion preferences.
 
 
 ## Features
