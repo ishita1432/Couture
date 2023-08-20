@@ -27,8 +27,8 @@ To run this project locally, follow these steps:
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/ishita1432/onlineStore.git`
-2. Navigate to the project directory: `cd onlineStore`
+1. Clone the repository: `git clone https://github.com/ishita1432/Couture.git`
+2. Navigate to the project directory: `cd Couture`
 
 ## Usage
 
