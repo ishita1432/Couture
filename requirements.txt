@@ -2,5 +2,4 @@ Django==4.0
 django_environ==0.10.0
 environ==1.0
 stripe==5.4.0
-dj-database-url==2.0.0
-PyMySQL==1.0.3
+
