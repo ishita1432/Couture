@@ -78,20 +78,22 @@
       }
     </style>
 
-    
+
     <!-- Custom styles for this template -->
     <link href="css/offcanvas-navbar.css" rel="stylesheet">
 {% block content %}
 
-<nav class="navbar navbar-expand-lg shadow-sm fixed-top navbar-light bg-light pt-4" aria-label="Main navigation">
+<nav class="navbar navbar-expand-lg shadow-md  navbar-light pt-4 fixed-top bg-light mb-lg-2"  aria-label="Main navigation">
   <div class="container-fluid ">
-    <a class="navbar-brand " href="{% url 'home' %}">Offcanvas navbar</a>
-    <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+    <a class="ms-0 me-2 navbar-brand  " href="{% url 'home' %}" >
+        <img src="{% static 'images/logo2.png' %}" >
+    </a>
+    <button class="navbar-toggler p-0  border-0 " type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="navbar-collapse offcanvas-collapse mt-lg-0 mt-2" id="navbarsExampleDefault">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <div class="navbar-collapse offcanvas-collapse ms-lg-3 ps-lg-3  mt-lg-0 mt-0 " id="navbarsExampleDefault">
+      <ul class="navbar-nav me-auto mb-0 mb-lg-0 ms-lg-5 ps-lg-5">
         <li class="nav-item mt-lg-0 mt-3">
           <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
@@ -105,19 +107,27 @@
           <a class="nav-link" href="{% url 'shop_with_category' category="Footwear" %}">Footwear</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="{% url 'orders' %}">My orders</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'wishlist' %}"><i class="fa fa-heart"></i></a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="btn btn-dark ms-2" href="" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
+        {% if user.is_authenticated %}
+        <li class="nav-item" >
+          <a class="btn btn-dark ms-lg-2" href="{% url 'logout' %}">Logout</a>
+        </i>
+        {% else %}
+        <li class="nav-item dropdown " >
+          <a class="btn btn-dark ms-lg-2" href="" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
-            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
             <li><a class="dropdown-item" href="{% url 'signup' %}">Sign up</a></li>
           </ul>
         </li>
+        {% endif %}
       </ul>
       {% comment %} <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
