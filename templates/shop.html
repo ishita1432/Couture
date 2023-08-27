@@ -235,7 +235,7 @@
                       <a class="add-to-wishlist" data-product-id="{{item.id}}" ><i class="fa fa-heart" style="cursor:pointer;"></i></a>
                     </li>
                     <li>
-                      <a href="{% url 'product_view' item.category.slug item.slug %}"
+                      <a href="{% url 'product_view' item.category.slug item.sub_category.slug item.slug %}"
                         ><i class="fa fa-eye"></i
                       ></a>
                     </li>
