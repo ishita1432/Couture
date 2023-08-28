@@ -38,7 +38,7 @@ To run this project locally, follow these steps:
 4. Create a superuser: `python manage.py createsuperuser`
 5. Start the development server: `python manage.py runserver`
 
-To visit my website, click [here](http://www.coutures.pythonanywhere.com).
+To visit my website, click [here](http://coutures.pythonanywhere.com).
 
 ## Contributing
 
