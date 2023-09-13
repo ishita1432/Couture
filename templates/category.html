@@ -3,50 +3,6 @@
 <link rel="stylesheet" href="{% static 'css/category.css' %}" />
 
  {% block content %} 
-{% comment %} <div class="row" style="margin-top: 2px; margin: 10px; justify-content: center">
-  {% for item in category %}
-  <div class="col-lg-4 col-md-12 col-9 p-1">
-    <div class="category-card">
-      <img
-        src="{{item.category_image.url}}"
-        class="img-fluid w-100"
-        alt="{{item.category_image.url}}"
-      />
-      <div class="button">
-        <input type="button" class="cat-button" value="{{item.name}}" />
-      </div>
-    </div>
-  </div>
-  {% endfor %}
-</div>
-{% endcomment %} 
-{% comment %} <div class="container collection mt-auto">
-  <div class="row">
-    <div class="col-md-6 col-sm-10 py-2">
-      <div class="collection_container">
-        <img src="{% static 'images/c2.png' %}" class="img-fluid" />
-      </div>
-    </div>
-    <div class="col-md-6 col-sm-10 py-2">
-      <div class="collection_container">
-        <img src="{% static 'images/c2.png' %}" class="img-fluid" />
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Gallery -->
-{% endblock content %} {% block script %}
-<script src="https://unpkg.com/scrollreveal"></script>
-<script>
-  ScrollReveal({ reset: true });
-
-  ScrollReveal().reveal(".collection_container", {
-    duration: 4000,
-    scale: 0.9,
-  });
-</script> {% endcomment %}
-
 
 <!--Category section-->
 <div class="category">
@@ -67,10 +23,6 @@
                 <div class="offer-overlay"></div>
               </div>
               <div class="offer-info ">
-              {% comment %} <p class="heading text-capitalize ">{{item.description}}</p> 
-               <p class="offer-title text-uppercase font-weight-bold">
-                  Don't miss this chance
-                </p> {% endcomment %}
                 <a 
                    class="btn btn-warning text-uppercase mt-4">
                   {{item.description}}
