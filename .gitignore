@@ -1,3 +1,5 @@
 .env
 
-store/migrations/__pycache__
+
+
+store/migrations/__pycache__/
