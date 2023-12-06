@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': 'store',
         'USER': 'root',
         'PASSWORD': 'ishita',
-        'HOST': 'localhost',
+        'HOST': 'https://couture-z9me.onrender.com',
         'PORT': 3306,
     }
 }
