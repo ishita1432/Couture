@@ -32,7 +32,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['couture-z9me.onrender.com']
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': 'store',
         'USER': 'root',
         'PASSWORD': 'ishita',
-        'HOST': 'https://couture-z9me.onrender.com',
+        'HOST': 'localhost',
         'PORT': 3306,
     }
 }
