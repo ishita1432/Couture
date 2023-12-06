@@ -3,4 +3,4 @@ django_environ==0.10.0
 environ==1.0
 stripe==5.4.0
 gunicorn
-
+mysqlclient
